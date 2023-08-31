@@ -16,5 +16,9 @@ export const GlobalStyle = globalCss({
     'body, input, textarea, button': {
         fontFamily: 'Roboto',
         fontWeight: 400
+    },
+
+    h3: {
+        fontSize: '1.25rem',
     }
 })

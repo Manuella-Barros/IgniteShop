@@ -8,14 +8,14 @@ GlobalStyle();
 
 export default function App({ Component, pageProps }: AppProps) {
   return(
-    <div>
+    <div style={{overflow: 'hidden', height: '100vh'}}>
       <Style.Header>
         <picture>
           <Image width={129.74} height={52} src={logoSVG.src} alt="" />
         </picture>
-      <picture>
-        <img src="../assets/logo.svg" alt="" />
-      </picture>
+        <picture>
+          <img src="../assets/logo.svg" alt="" />
+        </picture>
       </Style.Header>
 
       <Component {...pageProps} />

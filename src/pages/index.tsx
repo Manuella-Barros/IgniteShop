@@ -7,23 +7,53 @@ export default function Home() {
   return (
     <Style.Main>
       <Style.SwipeArrow side={'left'}>
-        <CaretLeft size={32} />
+        <CaretLeft size={32}/>
       </Style.SwipeArrow>
 
-      <Style.Product>
-        <picture>
-          <Image src={shirt} alt="" />
-        </picture>
-      </Style.Product>
+      <Style.Carrousel>
+        <Style.Product>
+          <picture>
+            <Image src={shirt} alt="" />
+          </picture>
+          <Style.ProductDescription>
+            <h3>Camiseta Beyond the Limits</h3>
+            <span>R$ 79,90</span>
+          </Style.ProductDescription>
+        </Style.Product>
+        
+        <Style.Product>
+          <picture>
+            <Image src={shirt} alt="" />
+          </picture>
+          <Style.ProductDescription>
+            <h3>Camiseta Beyond the Limits</h3>
+            <span>R$ 79,90</span>
+          </Style.ProductDescription>
+        </Style.Product>
 
-      <Style.Product>
-        <picture>
-          <Image src={shirt} alt="" />
-        </picture>
-      </Style.Product>
-      
-      <Style.SwipeArrow side={'rigth'}>
-        <CaretRight size={32} />
+        <Style.Product>
+          <picture>
+            <Image src={shirt} alt="" />
+          </picture>
+          <Style.ProductDescription>
+            <h3>Camiseta Beyond the Limits</h3>
+            <span>R$ 79,90</span>
+          </Style.ProductDescription>
+        </Style.Product>
+
+        <Style.Product>
+          <picture>
+            <Image src={shirt} alt="" />
+          </picture>
+          <Style.ProductDescription>
+            <h3>Camiseta Beyond the Limits</h3>
+            <span>R$ 79,90</span>
+          </Style.ProductDescription>
+        </Style.Product>
+      </Style.Carrousel>
+
+      <Style.SwipeArrow side={'right'}>
+        <CaretRight size={32}/>
       </Style.SwipeArrow>
     </Style.Main>
   )
