@@ -18,7 +18,7 @@ export const Main = styled('main', {
 export const Carrousel = styled('div',{
   overflow: 'scroll',
   display: 'flex',
-  gap: '48px',
+  //gap: '48px',
   position: 'relative',
 
   '&::-webkit-scrollbar': {
