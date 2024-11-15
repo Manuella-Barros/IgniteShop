@@ -7,12 +7,25 @@ import 'keen-slider/keen-slider.min.css'
 import { stripe } from '@/lib/stripe'
 import Stripe from 'stripe'
 import Link from 'next/link'
+import { GetStaticProps } from 'next'
+import { useEffect } from 'react'
+import Head from 'next/head'
 
 export interface IndexProps {
   products: IProduct[]
 }
 
 export default function Index({ products }: IndexProps) {
+  async function pegahello() {
+    const response = await fetch('/api/hello')
+    const payload = await response.json()
+    console.log(payload)
+  }
+
+  useEffect(() => {
+    pegahello()
+  }, [])
+
   const [sliderRef] = useKeenSlider({
     slides: {
       perView: 3,
@@ -21,42 +34,47 @@ export default function Index({ products }: IndexProps) {
   })
 
   return (
-    <Style.Main>
-      <Style.SwipeArrow side={'left'}>
-        <CaretLeft size={32} />
-      </Style.SwipeArrow>
+    <>
+      <Head>
+        <title>Ignite Shop</title>
+      </Head>
+      <Style.Main>
+        <Style.SwipeArrow side={'left'}>
+          <CaretLeft size={32} />
+        </Style.SwipeArrow>
 
-      <Style.Carrousel ref={sliderRef} className="keen-slider">
-        {products.map((product) => {
-          return (
-            <Link href={`/products/${product.id}`}>
-              <Style.Product key={product.id} className="keen-slider__slide">
-                <picture>
-                  <Image
-                    src={product.imageURL}
-                    alt=""
-                    width={500}
-                    height={500}
-                  />
-                </picture>
-                <Style.ProductDescription>
-                  <h3>{product.name}</h3>
-                  <span>{product.price}</span>
-                </Style.ProductDescription>
-              </Style.Product>
-            </Link>
-          )
-        })}
-      </Style.Carrousel>
+        <Style.Carrousel ref={sliderRef} className="keen-slider">
+          {products.map((product) => {
+            return (
+              <Link key={product.id} href={`/product/${product.id}`}>
+                <Style.Product className="keen-slider__slide">
+                  <picture>
+                    <Image
+                      src={product.imageURL}
+                      alt=""
+                      width={500}
+                      height={500}
+                    />
+                  </picture>
+                  <Style.ProductDescription>
+                    <h3>{product.name}</h3>
+                    <span>{product.price}</span>
+                  </Style.ProductDescription>
+                </Style.Product>
+              </Link>
+            )
+          })}
+        </Style.Carrousel>
 
-      <Style.SwipeArrow side={'right'}>
-        <CaretRight size={32} />
-      </Style.SwipeArrow>
-    </Style.Main>
+        <Style.SwipeArrow side={'right'}>
+          <CaretRight size={32} />
+        </Style.SwipeArrow>
+      </Style.Main>
+    </>
   )
 }
 
-export const getStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const response = await stripe.products.list({
     expand: ['data.default_price'],
   })
@@ -81,5 +99,6 @@ export const getStaticProps = async () => {
     props: {
       products,
     },
+    revalidate: 60,
   }
 }

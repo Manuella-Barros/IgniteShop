@@ -34,6 +34,7 @@ export const ProductDetails = styled('div', {
 
   h1: {
     fontSize: '$2xl',
+    color: 'white',
   },
 
   span: {

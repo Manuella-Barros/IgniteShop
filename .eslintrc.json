@@ -1,5 +1,5 @@
 {
-  "extends": "@rocketseat/eslint-config/node",
+  "extends":["@rocketseat/eslint-config/node", "next"],
   "rules": {
     "no-useless-constructor": "off",
     "@typescript-eslint/no-explicit-any": "off"

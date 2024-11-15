@@ -24,6 +24,10 @@ export const Carrousel = styled('div', {
   '&::-webkit-scrollbar': {
     display: 'none',
   },
+
+  a: {
+    color: 'white',
+  },
 })
 
 export const Product = styled('section', {
